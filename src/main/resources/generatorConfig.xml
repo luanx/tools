@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-	<classPathEntry location="lib/mysql-connector-java-5.1.34.jar"/>
+	<properties resource="generator.properties"/>
+
+	<classPathEntry location="${jdbc.driverLocation}"/>
 
 	<!-- 数据库驱动-->
 	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -14,8 +16,10 @@
 			<property name="suppressAllComments" value="false"/>
 			<property name="javaFileEncoding" value="UTF-8"/>
 		</commentGenerator>
+
 		<!--数据库链接URL，用户名、密码 -->
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://120.26.128.99:3306/erp?useUnicode=true&amp;characterEncoding=UTF-8" userId="root" password="root">
+		<jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.connectionURL}"
+						userId="${jdbc.userId}" password="${jdbc.password}">
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false"/>
